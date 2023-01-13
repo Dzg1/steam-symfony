@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{# ... #}
-
 {% block body %}
+<div class="body-wrapper">
 	{% if error %}
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
@@ -19,6 +18,8 @@
 			        <input type="hidden" name="_target_path" value="/account"> #}
 
 			<button type="submit">login</button>
+			<a href="{{ path('app_register') }}">Cliquez ici pour vous inscrire</a>
 		</div>
 	</form>
+</div>
 {% endblock %}

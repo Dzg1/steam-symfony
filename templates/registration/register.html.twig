@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="body-wrapper">
 	<h1>Register</h1>
 	{{ form_start(registrationForm) }}
 	<div class="wrapper-form">
@@ -14,7 +15,8 @@
         }) }}
 		{{ form_row(registrationForm.agreeTerms) }}
 
-		<button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+		<button type="submit" class="btn btn-primary mb-3">s'inscrire</button>
 	</div>
 	{{ form_end(registrationForm) }}
+</div>
 {% endblock %}

@@ -1,11 +1,29 @@
 @import "~bootstrap/scss/bootstrap";
 
+.body-wrapper{
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
+}
+
+.home-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.home-wrapper h1{
+    padding: 50px 0;
+}
 .navbar{
     background: rgba(82, 61, 61, 0.171);
 }
 
 footer{
+    padding-top:30px ;
     width: 100%;
     background: rgba(15, 11, 11, 0.171);
 
