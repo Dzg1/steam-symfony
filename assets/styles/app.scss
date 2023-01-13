@@ -1,5 +1,33 @@
 @import "~bootstrap/scss/bootstrap";
 
-body {
-    background-color: lightgray;
+
+.navbar{
+    background: rgba(82, 61, 61, 0.171);
+}
+
+footer{
+    width: 100%;
+    background: rgba(15, 11, 11, 0.171);
+
+}
+
+
+
+.footer-bottom{
+    background: rgba(0, 0, 0, 0.171);
+
+}
+
+.wrapper-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 500px;
+    margin: 30px auto;
+    padding: 30px;
 }
