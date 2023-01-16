@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Game;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class GameType extends AbstractType
@@ -16,7 +18,14 @@ class GameType extends AbstractType
             ->add('genre')
             ->add('price')
             ->add('imageName')
-            ->add('libraries')
+            ->add('users', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'email',
+                'mapped' => true,
+                'multiple' => true,
+                'expanded' => true
+                
+            ])
         ;
     }
 

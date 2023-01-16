@@ -34,9 +34,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $pseudo = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Library $library = null;
+    #[ORM\ManyToMany(targetEntity: Game::class, mappedBy: 'users')]
+    private Collection $games;
 
+    public function __construct()
+    {
+        $this->games = new ArrayCollection();
+    }
+
+   
 
   
 
@@ -142,34 +148,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Library>
+     * @return Collection<int, Game>
      */
-    public function getLibrary(): Collection
+    public function getGames(): Collection
     {
-        return $this->library;
+        return $this->games;
     }
 
-    public function addLibrary(Library $library): self
+    public function addGame(Game $game): self
     {
-        if (!$this->library->contains($library)) {
-            $this->library->add($library);
+        if (!$this->games->contains($game)) {
+            $this->games->add($game);
+            $game->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeLibrary(Library $library): self
+    public function removeGame(Game $game): self
     {
-        $this->library->removeElement($library);
+        if ($this->games->removeElement($game)) {
+            $game->removeUser($this);
+        }
 
         return $this;
     }
 
-    public function setLibrary(?Library $library): self
-    {
-        $this->library = $library;
-
-        return $this;
-    }
 
 }

@@ -27,14 +27,13 @@ class Game
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
-    #[ORM\ManyToMany(targetEntity: Library::class, inversedBy: 'games')]
-    private Collection $libraries;
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'games')]
+    private Collection $users;
 
     public function __construct()
     {
-        $this->libraries = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
-
 
 
 
@@ -91,38 +90,26 @@ class Game
         return $this;
     }
 
-    public function getLibrary(): ?Library
-    {
-        return $this->library;
-    }
-
-    public function setLibrary(?Library $library): self
-    {
-        $this->library = $library;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Library>
+     * @return Collection<int, User>
      */
-    public function getLibraries(): Collection
+    public function getUsers(): Collection
     {
-        return $this->libraries;
+        return $this->users;
     }
 
-    public function addLibrary(Library $library): self
+    public function addUser(User $user): self
     {
-        if (!$this->libraries->contains($library)) {
-            $this->libraries->add($library);
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
         }
 
         return $this;
     }
 
-    public function removeLibrary(Library $library): self
+    public function removeUser(User $user): self
     {
-        $this->libraries->removeElement($library);
+        $this->users->removeElement($user);
 
         return $this;
     }
