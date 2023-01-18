@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	Hello HomeController!
 {% endblock %}
-
+{% block stylesheets %}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
 {% block body %}
 	<div class="body-wrapper">
 		<style>
@@ -20,29 +23,27 @@
 
 		<div class="home-wrapper">
 			<h1>Hello! Bienvenu sur Steam de Wish</h1>
-
-			C'est comme Steam sauf que :
-			<ul>
-				<li>C'est de la merde</li>
-				<li>Ca marche pas vraiment!</li>
-				<li>C'est vraiment de la merde</li>
-				<li>Enjoy ! :D</li>
-			</ul>
 			<div class="game-home">
 				<h2>Nos jeux</h2>
 				<div class="all-cards">
-				{% for game in games %}
-					<div class="card-game">
-						<div class="img-card">
-						<img class="image-card" src="{{ asset('image/'~ game.imageName)}}" alt="image de {{game.name}}">
+					{% for game in games %}
+						<div class="card-container">
+							<div class="card-game">
+								<div class="img-card">
+									<img class="image-card" src="{{ asset('image/'~ game.imageName)}}" alt="image de {{game.name}}">
+								</div>
+								<div class="card-text">
+									<h3>{{game.name}}</h3>
+									<div class="moove">
+										<span>{{game.genre}}</span>
+										<span>{{game.description}}</span>
+									</div>
+								</div>
+								<span class="price">{{game.price}}
+									€</span>
+							</div>
 						</div>
-						<div class="card-text">
-							<h3>{{game.name}}</h3>
-							<span>{{game.genre}}</span>
-						</div>
-							<span class="price">{{game.price}} €</span>
-					</div>
-				{% endfor %}
+					{% endfor %}
 				</div>
 			</div>
 		</div>

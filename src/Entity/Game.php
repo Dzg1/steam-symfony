@@ -30,6 +30,9 @@ class Game
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'games')]
     private Collection $users;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -113,5 +116,19 @@ class Game
 
         return $this;
     }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    
 
 }
